@@ -1,32 +1,17 @@
 import React from 'react';
-import Autocomplete from 'react-google-autocomplete';
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 
 const Form = (props) => {
+	
+	const inputProps = {
+		value: props.address,
+		onChange: props.handleChange,
+	}
 	return(
-		<form onSubmit={props.handleSubmit}>
-			<Autocomplete
-    			style={{width: '100%'}}
-   				onPlaceSelected={(place) => {
-      				console.log(place);
-    			}}
-				types={['(address)']}
-				id="startAddy"
-				name="startAddy"
-				onChange={props.handleChange}
-    			componentRestrictions={{country: "ru"}}
-			/>
-			<Autocomplete
-    			style={{width: '100%'}}
-   				onPlaceSelected={(place) => {
-      				console.log(place);
-    			}}
-				types={['(address)']}
-				id="endAddy"
-				name="endAddy"
-				onChange={props.handleChange}
-    			componentRestrictions={{country: "ru"}}
-			/>
-			<button className="form-btn">Calculate</button>
+		<form>
+			<PlacesAutocomplete inputProps={inputProps} />
+			<PlacesAutocomplete inputProps={inputProps} />
+			<button className="form-btn" type="submit">Calculate</button>
 		</form>
 	)
 }
