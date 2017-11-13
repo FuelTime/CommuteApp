@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
+import Form from './form'
+// const ReactIcons = require('react');
 // import Autocomplete from 'react-google-autocomplete';
 import Landing from './landing';
 
@@ -10,18 +13,50 @@ import Landing from './landing';
 // ReactDOM.render(<h1></h1>, document.getElementById('app'));
 
 
+// form comp
+
+// result comp
+
+// 
+
+// results page 
+
+
+
 class App extends React.Component {
     constructor(){
         super()
         this.state = {
-
+            address: ""
         }
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
+    handleSubmit(e){
+        e.preventDefault();
+        geocodeByAddress(this.state.address)
+        .then(results => getLatLng(results[0]))
+        .then(latLng => console.log('Success', latLng))
+        .catch(error => console.error('Error', error))
+    }
+    handleChange(address){
+        this.setState({ 
+            address 
+        });
+    }
+    componentDidMount() {
+        const elem = document.getElementById('autocomplete')
+        this.autocomplete = new window.google.maps.places.Autocomplete(elem, { types: ['geocode'] })    
     }
 
     render(){
       return(
         <div>
-          <Landing />
+            <Landing  
+                handleSubmit={this.handleSubmit} 
+                address={this.state.address}
+                handleChange={this.handleChange}
+            />
         </div>
       );
     }
