@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Autocomplete from 'react-google-autocomplete';
 import Main from './main';
-import Form from './form';
+import Form from './form'
 import Result from './result';
 // const ReactIcons = require('react');
 // const FontAwesome = require('react-fontawesome');
@@ -15,7 +15,8 @@ import Result from './result';
 class Landing extends Component {
     render(){
         return(
-            <div className="wrapper"></div>
+            <div className="wrapper">
+            </div>
         )
     }
 }
