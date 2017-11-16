@@ -12,15 +12,15 @@ const Form = (props) => {
 		onChange: props.handleChangeEnd,
 	}
 
-	litCommute.getCommuteData = function(origin, destination){
-		var service = new google.maps.DistanceMatrixService();
-		service.getDistanceMatrix(
-		{
-			origins: [origin],
-			destinations: [destination],
-			travelMode: 'TRANSIT'
-		}, litCommute.handleCommuteData);
-	}
+	// litCommute.getCommuteData = function(origin, destination){
+	// 	var service = new google.maps.DistanceMatrixService();
+	// 	service.getDistanceMatrix(
+	// 	{
+	// 		origins: [origin],
+	// 		destinations: [destination],
+	// 		travelMode: 'TRANSIT'
+	// 	}, litCommute.handleCommuteData);
+	// }
 	
 
 	return(
