@@ -1,8 +1,7 @@
 import React from 'react';
-
 import Form from './form';
 
-const Landing = () => {
+const Landing = (props) => {
   return (
     <div>
       <div className="left">
@@ -13,7 +12,13 @@ const Landing = () => {
         <main>
           <p>To drive or to take the GTA's public transit?</p>
           <p>Weigh the cost in money and time.</p>
-          <Form />
+          <Form 
+              handleSubmit={props.handleSubmit} 
+              startAdd={props.startAdd}
+              endAdd= {props.endAdd}
+              handleChangeStart={props.handleChangeStart}
+              handleChangeEnd={props.handleChangeEnd}
+          />
         </main>
       </div>
       <div className="right">
