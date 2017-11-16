@@ -18,7 +18,9 @@ class App extends React.Component {
         super()
         this.state = {
             startAdd: "",
-            endAdd: ""
+            endAdd: "",
+            startAddvalue: "",
+            endAddvalue: ""
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChangeStart = this.handleChangeStart.bind(this);
@@ -41,6 +43,36 @@ class App extends React.Component {
             endAdd 
         });
     }
+
+    getDrivingData(origin, destination){
+		var service = new google.maps.DirectionsService();
+		var getRoute = {
+			origins: [startAdd],
+			destinations: [endAdd],
+			travelMode: 'DRIVING'
+        }
+        service.route(getRoute, handleCommuteData);
+    }
+    
+    getTransitData(origin, destination){
+		var service = new google.maps.DirectionsService();
+		var getRoute = {
+			origins: [startAdd],
+			destinations: [endAdd],
+			travelMode: 'TRANSIT'
+        }
+        service.route(getRoute, handleCommuteData);
+	}
+    
+    handleCommuteData(response, status) {
+        if (status == "OK") {
+          var warnings = document.getElementById("warnings_panel");
+          warnings.innerHTML = "" + response.routes[0].warnings + "";
+          directionsDisplay.setDirections(response);
+          showSteps(response);
+        }
+    };
+    
     componentDidMount() {
         const elem = document.getElementById('autocomplete')
         this.autocomplete = new window.google.maps.places.Autocomplete(elem, { types: ['geocode'] })    
