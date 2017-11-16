@@ -33,14 +33,16 @@ class App extends React.Component {
         .then(latLng => console.log('Success', latLng))
         .catch(error => console.error('Error', error))
     }
-    handleChangeStart(startAdd){
+    handleChangeStart(e){
+        // e.preventDefault();
         this.setState({ 
-            startAdd 
+            startAdd: e
         });
     }
-    handleChangeEnd(endAdd){
+    handleChangeEnd(e){
+        // e.preventDefault();
         this.setState({ 
-            endAdd 
+            endAdd: e
         });
     }
 
@@ -85,6 +87,8 @@ class App extends React.Component {
                 handleSubmit={this.handleSubmit} 
                 startAdd={this.state.startAdd}
                 endAdd={this.state.endAdd}
+                startAddvalue={this.state.startAddvalue}
+                endAddvalue={this.state.endAddvalue}
                 handleChangeStart={this.handleChangeStart}
                 handleChangeEnd={this.handleChangeEnd}
             />
@@ -94,13 +98,3 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App/>, document.getElementById('app'));
-
-// .getCommuteData = function(origin, destination){
-// 	var service = new google.maps.DistanceMatrixService();
-//     service.getDistanceMatrix(
-//     {
-//         origins: [origin],
-//         destinations: [destination],
-//         travelMode: 'TRANSIT'
-//     }, litCommute.handleCommuteData);
-// }
