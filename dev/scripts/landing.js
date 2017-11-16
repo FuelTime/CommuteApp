@@ -14,8 +14,10 @@ const Landing = (props) => {
           <p>Weigh the cost in money and time.</p>
           <Form 
               handleSubmit={props.handleSubmit} 
-              address={props.address}
-              handleChange={props.handleChange}
+              startAdd={props.startAdd}
+              endAdd= {props.endAdd}
+              handleChangeStart={props.handleChangeStart}
+              handleChangeEnd={props.handleChangeEnd}
           />
         </main>
       </div>

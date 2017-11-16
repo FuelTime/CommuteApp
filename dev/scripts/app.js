@@ -13,24 +13,16 @@ import Landing from './landing';
 // ReactDOM.render(<h1></h1>, document.getElementById('app'));
 
 
-// form comp
-
-// result comp
-
-// 
-
-// results page 
-
-
-
 class App extends React.Component {
     constructor(){
         super()
         this.state = {
-            address: ""
+            startAdd: "",
+            endAdd: ""
         }
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.handleChangeStart = this.handleChangeStart.bind(this);
+        this.handleChangeEnd = this.handleChangeEnd.bind(this);
     }
     handleSubmit(e){
         e.preventDefault();
@@ -39,9 +31,14 @@ class App extends React.Component {
         .then(latLng => console.log('Success', latLng))
         .catch(error => console.error('Error', error))
     }
-    handleChange(address){
+    handleChangeStart(startAdd){
         this.setState({ 
-            address 
+            startAdd 
+        });
+    }
+    handleChangeEnd(endAdd){
+        this.setState({ 
+            endAdd 
         });
     }
     componentDidMount() {
@@ -54,8 +51,10 @@ class App extends React.Component {
         <div>
             <Landing  
                 handleSubmit={this.handleSubmit} 
-                address={this.state.address}
-                handleChange={this.handleChange}
+                startAdd={this.state.startAdd}
+                endAdd={this.state.endAdd}
+                handleChangeStart={this.handleChangeStart}
+                handleChangeEnd={this.handleChangeEnd}
             />
         </div>
       );
