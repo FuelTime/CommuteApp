@@ -4,32 +4,22 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-au
 const Form = (props) => {
 	
 	const inputPropsStart = {
-		value: props.startAdd,
+		value: props.startAddvalue,
 		onChange: props.handleChangeStart,
 	}
 	const inputPropsEnd = {
-		value: props.endAdd,
+		value: props.endAddvalue,
 		onChange: props.handleChangeEnd,
 	}
 
-	// litCommute.getCommuteData = function(origin, destination){
-	// 	var service = new google.maps.DistanceMatrixService();
-	// 	service.getDistanceMatrix(
-	// 	{
-	// 		origins: [origin],
-	// 		destinations: [destination],
-	// 		travelMode: 'TRANSIT'
-	// 	}, litCommute.handleCommuteData);
-	// }
-	
-
 	return(
-		<form>
+		<form onSubmit={props.handleSubmit}>
 			<PlacesAutocomplete inputProps={inputPropsStart} />
 			<PlacesAutocomplete inputProps={inputPropsEnd} />
 			<button className="form-btn" type="submit">Calculate</button>
 		</form>
 	)
+
 }
 
 export default Form;
