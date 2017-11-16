@@ -4,18 +4,18 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-au
 const Form = (props) => {
 	
 	const inputPropsStart = {
-		value: props.startAddvalue,
+		value: props.startAdd,
 		onChange: props.handleChangeStart,
 	}
 	const inputPropsEnd = {
-		value: props.endAddvalue,
+		value: props.endAdd,
 		onChange: props.handleChangeEnd,
 	}
 
 	return(
 		<form onSubmit={props.handleSubmit}>
-			<PlacesAutocomplete inputProps={inputPropsStart} />
-			<PlacesAutocomplete inputProps={inputPropsEnd} />
+			<PlacesAutocomplete inputProps={inputPropsStart} name="startAdd" value={props.startAdd}/>
+			<PlacesAutocomplete inputProps={inputPropsEnd} name="endAdd"/>
 			<button className="form-btn" type="submit">Calculate</button>
 		</form>
 	)
