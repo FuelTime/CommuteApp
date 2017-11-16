@@ -13,7 +13,7 @@ const concat = require('gulp-concat');
 gulp.task('styles', () => {
     return gulp.src('./dev/styles/**/*.scss')
         .pipe(sass().on('error', sass.logError))
-        .pipe(concat('style.css'))
+        .pipe(concat('styles.css'))
         .pipe(gulp.dest('./public/styles'))
 });
 
@@ -45,5 +45,5 @@ gulp.task('bs', () => {
 gulp.task('default', ['js','bs', 'styles'], () => {
     gulp.watch('dev/**/*.js',['js']);
     gulp.watch('dev/**/*.scss',['styles']);
-    gulp.watch('./public/styles/style.css',reload);
+    gulp.watch('./public/styles/styles.css',reload);
 });

@@ -1,0 +1,65 @@
+html {
+	font-size: 10px;
+}
+
+body {
+	background-color: #3a373b;
+	border: 20px solid $whiteColour;
+	color: $whiteColour;
+	height: 100vh;
+}
+
+h1, h2 {
+  font-family: $textFont;
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+	font-size: 2.5rem;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+h2 {
+	font-size: 1.5rem;
+
+}
+
+p {
+	font-family: $textFont;
+	font-size: 1.4rem;
+}
+
+input {
+  width: 100%;
+  border: none;
+  font-size: 2rem;
+}
+
+.wrapper {
+	max-width: 1170px;
+	margin: 0 auto;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+	padding: 0;
+	margin: 0;
+	border: none;
+	background: $btnColour;
+	display: block;
+}
+
+ul, li {
+	list-style: none;
+	padding: 0;
+}
