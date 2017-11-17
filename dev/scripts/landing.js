@@ -16,10 +16,7 @@ const Landing = (props) => {
               handleSubmit={props.handleSubmit} 
               startAdd={props.startAdd}
               endAdd= {props.endAdd}
-              startAddvalue= {props.startAddvalue}
-              endAddvalue= {props.endAddvalue}
-              handleChangeStart={props.handleChangeStart}
-              handleChangeEnd={props.handleChangeEnd}
+              handleChange={props.handleChange}
           />
         </main>
       </div>

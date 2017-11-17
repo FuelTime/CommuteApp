@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 import Form from './form'
 // const ReactIcons = require('react');
 // import Autocomplete from 'react-google-autocomplete';
@@ -19,12 +18,9 @@ class App extends React.Component {
         this.state = {
             startAdd: "",
             endAdd: "",
-            startAddvalue: "",
-            endAddvalue: ""
         }
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChangeStart = this.handleChangeStart.bind(this);
-        this.handleChangeEnd = this.handleChangeEnd.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
     handleSubmit(e){
         e.preventDefault();
@@ -33,16 +29,15 @@ class App extends React.Component {
         .then(latLng => console.log('Success', latLng))
         .catch(error => console.error('Error', error))
     }
-    handleChangeStart(e){
-        // e.preventDefault();
+    handleChange(e){
+        let input = e.target;
+        let options = {
+            types: ['address']
+        }
+        let autocomplete = new google.maps.places.Autocomplete(input, options);
+        console.log(e.target.value, autocomplete);
         this.setState({ 
-            startAdd: e
-        });
-    }
-    handleChangeEnd(e){
-        // e.preventDefault();
-        this.setState({ 
-            endAdd: e
+            [e.target.name]: e.target.value,
         });
     }
 
@@ -87,10 +82,7 @@ class App extends React.Component {
                 handleSubmit={this.handleSubmit} 
                 startAdd={this.state.startAdd}
                 endAdd={this.state.endAdd}
-                startAddvalue={this.state.startAddvalue}
-                endAddvalue={this.state.endAddvalue}
-                handleChangeStart={this.handleChangeStart}
-                handleChangeEnd={this.handleChangeEnd}
+                handleChange={this.handleChange}
             />
         </div>
       );
