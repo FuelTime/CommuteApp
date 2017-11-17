@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Form from './form'
-// const ReactIcons = require('react');
-// import Autocomplete from 'react-google-autocomplete';
 import Landing from './landing';
 
 // const ReactIcons = require('react'); 
