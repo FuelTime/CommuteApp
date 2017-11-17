@@ -19,13 +19,17 @@ class App extends React.Component {
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleCommuteData = this.handleCommuteData.bind(this);
+        this.getDrivingData = this.getDrivingData.bind(this);
+        this.getTransitData = this.getTransitData.bind(this);
     }
     handleSubmit(e){
         e.preventDefault();
-        geocodeByAddress(this.state.address)
-        .then(results => getLatLng(results[0]))
-        .then(latLng => console.log('Success', latLng))
-        .catch(error => console.error('Error', error))
+        let drivingData = this.getDrivingData(this.state.startAdd, this.state.endAdd)
+        let transitData = this.getTransitData(this.state.startAdd, this.state.endAdd)
+        // replace current content with time and cost for driving and transit
+        console.log(drivingData);
+        console.log(transitData)
     }
     handleChange(e){
         let input = e.target;
@@ -33,7 +37,6 @@ class App extends React.Component {
             types: ['address']
         }
         let autocomplete = new google.maps.places.Autocomplete(input, options);
-        console.log(e.target.value, autocomplete);
         this.setState({ 
             [e.target.name]: e.target.value,
         });
@@ -42,21 +45,21 @@ class App extends React.Component {
     getDrivingData(origin, destination){
 		var service = new google.maps.DirectionsService();
 		var getRoute = {
-			origins: [startAdd],
-			destinations: [endAdd],
+			origin: [origin],
+			destination: [destination],
 			travelMode: 'DRIVING'
         }
-        service.route(getRoute, handleCommuteData);
+        service.route(getRoute, this.handleCommuteData);
     }
     
     getTransitData(origin, destination){
 		var service = new google.maps.DirectionsService();
 		var getRoute = {
-			origins: [startAdd],
-			destinations: [endAdd],
+			origin: [origin],
+			destination: [destination],
 			travelMode: 'TRANSIT'
         }
-        service.route(getRoute, handleCommuteData);
+        service.route(getRoute, this.handleCommuteData);
 	}
     
     handleCommuteData(response, status) {
